@@ -1,0 +1,144 @@
+:root{
+    --container-bg-color: #333;
+    --right-bg-color: rgba(46, 82, 241, 0.7);
+    --left-button-hover-color: rgba(52, 21, 224, 0.3);
+    --left-bg-color: rgba(212, 28, 28, 0.76);
+    --right-button-hover-color: rgba(170, 20, 20, 0.493);
+    --hover-width: 75%;
+    --other-width: 24%;
+    --speed: 1000ms
+}
+html, body{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 4rem;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-align: center ;
+
+}
+.button{
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    height: 2.5rem;
+    padding-top: 1.3rem;
+    width: 15rem;
+    text-align: center;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: translateX(-50%);
+}
+
+.split.left-side .button:hover{
+    background-color: var(--left-button-hover-color);
+    border-color: var(--left-button-hover-color);
+}
+
+.split.right-side .button:hover{
+    background-color: var(--right-button-hover-color);
+    border-color: var(--right-button-hover-color);
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--container-bg-color);
+}
+.container .split{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+.container .split.left-side{
+    left: 0;
+    background: url(./img/DC-Universe.jfif) center center no-repeat;
+    background-size: cover;
+}
+.split.left-side:before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: var(--left-bg-color);
+}
+.split.right-side{
+    right: 0;
+    background: url(./img/Marvel-Universe.jpg) center center no-repeat;
+    background-size: cover;
+}
+.split.right-side:before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: var(--right-bg-color);
+}
+.split.left-side, .split.right-side, .split.right-side:before, .split.left-side:before{
+    transition: var(--speed) all ease-in-out;
+}
+.hover-left .left-side{
+    width: var(--hover-width);
+}
+.hover-left .right-side{
+    width: var(--other-width);
+}
+.hover-left .right-side:before{
+    z-index: 2;
+}
+
+.hover-right .right-side{
+    width: var(--hover-width);
+}
+.hover-right .left-side{
+    width: var(--other-width);
+}
+.hover-right .left-side:before{
+    z-index: 2;
+}
+
+.container .logo-area{
+    height: 20%;
+    width: 50%;
+    position: absolute;
+    top: 5%;
+    left: 25%;
+}
+.container .logo-area .logo{
+    height: 100%;
+    width: 30%;
+    position: relative;
+    left: 25%;
+    transition:  left 500ms linear, background-image 500ms linear;
+    z-index: 2;
+}
+
+@media(max-width: 800px){
+    h1{
+        font-size: 2rem;
+    }
+    .button{
+        width: 12rem;
+    }
+}
+@media(max-height: 700px){
+    .button{
+        top:70%;
+    }
+}
